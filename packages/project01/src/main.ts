@@ -29,6 +29,7 @@ import {
   Shape,
   ShapeGeometry,
   SphereGeometry,
+  TextureLoader,
   TorusGeometry,
   TorusKnotGeometry,
   WebGLRenderer
@@ -282,6 +283,21 @@ torusKnotDepth.castShadow = true
 torusKnotDepth.receiveShadow = true
 torusKnotDepth.position.set(8, 1, 2)
 scene.add(torusKnotDepth)
+
+const textureLoader = new TextureLoader()
+textureLoader.load("/texture.jpg", (texture) => {
+  console.log(texture)
+  const textureMesh = new Mesh(
+    new BoxGeometry(1, 1, 1),
+    new MeshStandardMaterial({
+      map: texture
+    })
+  )
+  textureMesh.position.set(0, 0.5, 8)
+  textureMesh.castShadow = true
+  textureMesh.receiveShadow = true
+  scene.add(textureMesh)
+})
 
 const renderer = new WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth, window.innerHeight)
