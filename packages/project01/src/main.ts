@@ -315,8 +315,33 @@ window.addEventListener("resize", () => {
 })
 
 const render = () => {
-  renderer.render(scene, camera)
+  torusKnotBasic.rotation.set(
+    torusKnotBasic.rotation.x + 0.01,
+    torusKnotBasic.rotation.y + 0.01,
+    torusKnotBasic.rotation.z + 0.01
+  )
+  torusKnotStandard.rotation.set(
+    torusKnotStandard.rotation.x + 0.01,
+    torusKnotStandard.rotation.y + 0.01,
+    torusKnotStandard.rotation.z + 0.01
+  )
+  torusKnotLambert.rotation.set(
+    torusKnotLambert.rotation.x + 0.01,
+    torusKnotLambert.rotation.y + 0.01,
+    torusKnotLambert.rotation.z + 0.01
+  )
+  torusKnotPhong.rotation.set(
+    torusKnotPhong.rotation.x + 0.01,
+    torusKnotPhong.rotation.y + 0.01,
+    torusKnotPhong.rotation.z + 0.01
+  )
+  torusKnotDepth.rotation.set(
+    torusKnotDepth.rotation.x + 0.01,
+    torusKnotDepth.rotation.y + 0.01,
+    torusKnotDepth.rotation.z + 0.01
+  )
   orbitControls.update()
+  renderer.render(scene, camera)
   requestAnimationFrame(render)
 }
 
