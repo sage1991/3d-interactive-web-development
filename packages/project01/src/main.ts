@@ -3,6 +3,7 @@ import "./style.css"
 import { aspect } from "@example/common"
 import {
   AxesHelper,
+  BackSide,
   BoxGeometry,
   BufferAttribute,
   BufferGeometry,
@@ -11,8 +12,14 @@ import {
   CylinderGeometry,
   DirectionalLight,
   DirectionalLightHelper,
+  DoubleSide,
   ExtrudeGeometry,
+  FrontSide,
   Mesh,
+  MeshBasicMaterial,
+  MeshDepthMaterial,
+  MeshLambertMaterial,
+  MeshPhongMaterial,
   MeshStandardMaterial,
   PerspectiveCamera,
   PlaneGeometry,
@@ -23,6 +30,7 @@ import {
   ShapeGeometry,
   SphereGeometry,
   TorusGeometry,
+  TorusKnotGeometry,
   WebGLRenderer
 } from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
@@ -39,10 +47,10 @@ camera.lookAt(0, 0, 0)
 
 const light = new DirectionalLight(0xffffff, 5)
 light.castShadow = true
-light.shadow.camera.top = 10
-light.shadow.camera.bottom = -10
-light.shadow.camera.right = 10
-light.shadow.camera.left = -10
+light.shadow.camera.top = 20
+light.shadow.camera.bottom = -20
+light.shadow.camera.right = 20
+light.shadow.camera.left = -20
 light.position.set(8, 8, 8)
 light.lookAt(0, 0, 0)
 scene.add(light)
@@ -51,7 +59,7 @@ scene.add(new DirectionalLightHelper(light, 0.1))
 scene.add(new CameraHelper(light.shadow.camera))
 
 const floor = new Mesh(
-  new PlaneGeometry(20, 20),
+  new PlaneGeometry(40, 40),
   new MeshStandardMaterial({ color: 0xefefef })
 )
 floor.rotation.x = -Math.PI / 2
@@ -172,9 +180,108 @@ const spherePoints = new Points(
   new PointsMaterial({ color: 0xffffff, size: 0.05 })
 )
 spherePoints.position.set(0, 6, 0)
-scene.add(spherePoints)
 spherePoints.castShadow = true
 spherePoints.receiveShadow = true
+scene.add(spherePoints)
+
+const frontSideBox = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshStandardMaterial({
+    color: 0x00ffff,
+    side: FrontSide
+  })
+)
+frontSideBox.position.set(-10, 0.5, 0)
+frontSideBox.receiveShadow = true
+frontSideBox.castShadow = true
+scene.add(frontSideBox)
+
+const backSideBox = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshStandardMaterial({
+    color: 0x00ff00,
+    side: BackSide
+  })
+)
+backSideBox.position.set(-8, 0.51, 0) // floor mesh 와의 z fighting 방지를 위해 y 축 값을 조금 다르게 수정
+backSideBox.receiveShadow = true
+// backSideBox.castShadow = true
+scene.add(backSideBox)
+
+const doubleSideBox = new Mesh(
+  new BoxGeometry(1, 1, 1),
+  new MeshStandardMaterial({
+    color: 0xffff00,
+    side: DoubleSide
+  })
+)
+doubleSideBox.position.set(-6, 0.51, 0) // floor mesh 와의 z fighting 방지를 위해 y 축 값을 조금 다르게 수정
+doubleSideBox.receiveShadow = true
+// doubleSideBox.castShadow = true
+scene.add(doubleSideBox)
+
+const torusKnotStandard = new Mesh(
+  new TorusKnotGeometry(0.5, 0.15, 100, 20),
+  new MeshStandardMaterial({
+    color: 0xff0000,
+    roughness: 0.5,
+    metalness: 1
+  })
+)
+torusKnotStandard.castShadow = true
+torusKnotStandard.receiveShadow = true
+torusKnotStandard.position.set(6, 1, 0)
+scene.add(torusKnotStandard)
+
+const torusKnotLambert = new Mesh(
+  new TorusKnotGeometry(0.5, 0.15, 100, 20),
+  new MeshLambertMaterial({
+    color: 0xff0000,
+    emissive: 0x00ff00,
+    emissiveIntensity: 0.2
+  })
+)
+torusKnotLambert.castShadow = true
+torusKnotLambert.receiveShadow = true
+torusKnotLambert.position.set(8, 1, 0)
+scene.add(torusKnotLambert)
+
+const torusKnotPhong = new Mesh(
+  new TorusKnotGeometry(0.5, 0.15, 100, 20),
+  new MeshPhongMaterial({
+    color: 0xff0000,
+    emissive: 0x00ff00,
+    emissiveIntensity: 0.2,
+    specular: 0x0000ff,
+    shininess: 100
+  })
+)
+torusKnotPhong.castShadow = true
+torusKnotPhong.receiveShadow = true
+torusKnotPhong.position.set(10, 1, 0)
+scene.add(torusKnotPhong)
+
+const torusKnotBasic = new Mesh(
+  new TorusKnotGeometry(0.5, 0.15, 100, 20),
+  new MeshBasicMaterial({
+    color: 0xff0000
+  })
+)
+torusKnotBasic.castShadow = true
+torusKnotBasic.receiveShadow = true
+torusKnotBasic.position.set(6, 1, 2)
+scene.add(torusKnotBasic)
+
+const torusKnotDepth = new Mesh(
+  new TorusKnotGeometry(0.5, 0.15, 100, 20),
+  new MeshDepthMaterial({
+    opacity: 0.5
+  })
+)
+torusKnotDepth.castShadow = true
+torusKnotDepth.receiveShadow = true
+torusKnotDepth.position.set(8, 1, 2)
+scene.add(torusKnotDepth)
 
 const renderer = new WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth, window.innerHeight)
