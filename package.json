@@ -1,10 +1,14 @@
 {
+  "name": "3d-interactive-web-development",
   "packageManager": "yarn@4.6.0",
   "private": true,
   "workspaces": {
     "packages": [
       "packages/*"
     ]
+  },
+  "scripts": {
+    "workspace": "yarn workspace"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
