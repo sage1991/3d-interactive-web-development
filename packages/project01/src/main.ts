@@ -87,7 +87,6 @@ scene.add(pointLight)
 scene.add(new PointLightHelper(pointLight, 1))
 
 const rectAreaLight = new RectAreaLight(0xffffff, 5, 10, 1)
-rectAreaLight.castShadow = true
 rectAreaLight.position.set(-9, 0.5, 9)
 rectAreaLight.lookAt(0, 0, 0)
 scene.add(rectAreaLight)
@@ -331,7 +330,6 @@ scene.add(torusKnotDepth)
 
 const textureLoader = new TextureLoader()
 textureLoader.load("/texture.jpg", (texture) => {
-  console.log(texture)
   const textureMesh = new Mesh(
     new BoxGeometry(1, 1, 1),
     new MeshStandardMaterial({
@@ -356,6 +354,13 @@ document.body.appendChild(renderer.domElement)
 const orbitControls = new OrbitControls(camera, renderer.domElement)
 orbitControls.enableDamping = true
 orbitControls.dampingFactor = 0.03
+orbitControls.autoRotate = true
+orbitControls.autoRotateSpeed = 1
+
+orbitControls.maxPolarAngle = Math.PI / 2
+orbitControls.minPolarAngle = Math.PI / 9
+orbitControls.maxAzimuthAngle = Math.PI
+orbitControls.minAzimuthAngle = -Math.PI
 
 window.addEventListener("resize", () => {
   renderer.setSize(window.innerWidth, window.innerHeight)
