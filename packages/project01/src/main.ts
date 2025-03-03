@@ -2,6 +2,7 @@ import "./style.css"
 
 import { aspect } from "@example/common"
 import {
+  AmbientLight,
   AxesHelper,
   BackSide,
   BoxGeometry,
@@ -15,26 +16,35 @@ import {
   DoubleSide,
   ExtrudeGeometry,
   FrontSide,
+  HemisphereLight,
+  HemisphereLightHelper,
   Mesh,
   MeshBasicMaterial,
   MeshDepthMaterial,
   MeshLambertMaterial,
   MeshPhongMaterial,
   MeshStandardMaterial,
+  Object3D,
   PerspectiveCamera,
   PlaneGeometry,
+  PointLight,
+  PointLightHelper,
   Points,
   PointsMaterial,
+  RectAreaLight,
   Scene,
   Shape,
   ShapeGeometry,
   SphereGeometry,
+  SpotLight,
+  SpotLightHelper,
   TextureLoader,
   TorusGeometry,
   TorusKnotGeometry,
   WebGLRenderer
 } from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
+import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper.js"
 
 const scene = new Scene()
 
@@ -55,17 +65,48 @@ light.shadow.camera.left = -20
 light.position.set(8, 8, 8)
 light.lookAt(0, 0, 0)
 scene.add(light)
-
-scene.add(new DirectionalLightHelper(light, 0.1))
+scene.add(new DirectionalLightHelper(light, 1))
 scene.add(new CameraHelper(light.shadow.camera))
+
+const ambientLight = new AmbientLight(0xffffff, 0.2)
+scene.add(ambientLight)
+
+const hemisphereLight = new HemisphereLight(0xb4a912, 0x12f34f, 1)
+hemisphereLight.position.set(0, 9, 0)
+scene.add(hemisphereLight)
+scene.add(new HemisphereLightHelper(hemisphereLight, 1))
+
+const pointLight = new PointLight(0xffffff, 5, 20, 0.5)
+pointLight.castShadow = true
+pointLight.position.set(-9, 9, -9)
+scene.add(pointLight)
+scene.add(new PointLightHelper(pointLight, 1))
+
+const rectAreaLight = new RectAreaLight(0xffffff, 5, 10, 1)
+rectAreaLight.castShadow = true
+rectAreaLight.position.set(-9, 0.5, 9)
+rectAreaLight.lookAt(0, 0, 0)
+scene.add(rectAreaLight)
+scene.add(new RectAreaLightHelper(rectAreaLight))
+
+const spotLightTarget = new Object3D()
+spotLightTarget.position.set(2, 0, 2)
+scene.add(spotLightTarget)
+
+const spotLight = new SpotLight(0xffffff, 10, 100, Math.PI / 4, 1, 1)
+spotLight.castShadow = true
+spotLight.position.set(9, 9, -9)
+spotLight.target = spotLightTarget
+scene.add(spotLight)
+scene.add(new SpotLightHelper(spotLight))
 
 const floor = new Mesh(
   new PlaneGeometry(40, 40),
-  new MeshStandardMaterial({ color: 0xefefef })
+  new MeshStandardMaterial({ color: 0xefefef, side: DoubleSide })
 )
 floor.rotation.x = -Math.PI / 2
 floor.receiveShadow = true
-floor.castShadow = true
+// floor.castShadow = true
 scene.add(floor)
 
 const box = new Mesh(
@@ -132,10 +173,10 @@ for (let i = 0; i < 10; i++) {
 
 const star = new Mesh(
   new ShapeGeometry(starShape),
-  new MeshStandardMaterial({ color: 0xff00ff })
+  new MeshStandardMaterial({ color: 0xff00ff, side: DoubleSide })
 )
 star.castShadow = true
-star.receiveShadow = true
+// star.receiveShadow = true
 star.position.set(0, 2, -3)
 scene.add(star)
 
