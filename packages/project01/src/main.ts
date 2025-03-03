@@ -5,6 +5,7 @@ import {
   AmbientLight,
   AxesHelper,
   BackSide,
+  BasicShadowMap,
   BoxGeometry,
   BufferAttribute,
   BufferGeometry,
@@ -25,6 +26,8 @@ import {
   MeshPhongMaterial,
   MeshStandardMaterial,
   Object3D,
+  PCFShadowMap,
+  PCFSoftShadowMap,
   PerspectiveCamera,
   PlaneGeometry,
   PointLight,
@@ -62,6 +65,7 @@ light.shadow.camera.top = 20
 light.shadow.camera.bottom = -20
 light.shadow.camera.right = 20
 light.shadow.camera.left = -20
+light.shadow.mapSize.set(4096, 4096)
 light.position.set(8, 8, 8)
 light.lookAt(0, 0, 0)
 scene.add(light)
@@ -343,6 +347,10 @@ textureLoader.load("/texture.jpg", (texture) => {
 const renderer = new WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.shadowMap.enabled = true
+// shadowMap 성능순 BasicShadowMap < PCFShadowMap < PCFSoftShadowMap
+renderer.shadowMap.type = BasicShadowMap
+renderer.shadowMap.type = PCFShadowMap
+renderer.shadowMap.type = PCFSoftShadowMap
 document.body.appendChild(renderer.domElement)
 
 const orbitControls = new OrbitControls(camera, renderer.domElement)
