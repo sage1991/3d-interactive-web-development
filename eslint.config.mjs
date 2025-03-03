@@ -21,5 +21,10 @@ export default [
       "simple-import-sort/exports": "error"
     }
   },
-  prettier
+  prettier,
+  {
+    rules: {
+      "@typescript-eslint/no-unused-expressions": "off"
+    }
+  }
 ]
