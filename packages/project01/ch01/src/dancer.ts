@@ -1,6 +1,6 @@
 import "./style.css"
 
-import { aspect, isMesh } from "@example/common"
+import { aspect, isMesh } from "@common/utils"
 import {
   AnimationMixer,
   Clock,

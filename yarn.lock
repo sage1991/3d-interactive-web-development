@@ -22,6 +22,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@common/utils@workspace:packages/common/utils":
+  version: 0.0.0-use.local
+  resolution: "@common/utils@workspace:packages/common/utils"
+  dependencies:
+    "@types/three": "npm:^0"
+    three: "npm:^0.173.0"
+    typescript: "npm:~5.7.2"
+    vite: "npm:^6.1.0"
+  languageName: unknown
+  linkType: soft
+
 "@esbuild/aix-ppc64@npm:0.24.2":
   version: 0.24.2
   resolution: "@esbuild/aix-ppc64@npm:0.24.2"
@@ -285,28 +296,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@example/common@workspace:packages/common":
-  version: 0.0.0-use.local
-  resolution: "@example/common@workspace:packages/common"
-  dependencies:
-    "@types/three": "npm:^0"
-    three: "npm:^0.173.0"
-    typescript: "npm:~5.7.2"
-    vite: "npm:^6.1.0"
-  languageName: unknown
-  linkType: soft
-
-"@example/project01@workspace:packages/project01":
-  version: 0.0.0-use.local
-  resolution: "@example/project01@workspace:packages/project01"
-  dependencies:
-    "@types/three": "npm:^0"
-    three: "npm:^0.173.0"
-    typescript: "npm:~5.7.2"
-    vite: "npm:^6.1.0"
-  languageName: unknown
-  linkType: soft
-
 "@humanfs/core@npm:^0.19.1":
   version: 0.19.1
   resolution: "@humanfs/core@npm:0.19.1"
@@ -430,6 +419,17 @@ __metadata:
   checksum: 10c0/3f7536bc7f57320ab2cf96f8973664bef624710c403357429fbf680a5c3b4843c1dbd389bb43daa6b1f6f1f007bb082f5abcb76bb2b5dc9f421647743b71d3d8
   languageName: node
   linkType: hard
+
+"@project01/ch01@workspace:packages/project01/ch01":
+  version: 0.0.0-use.local
+  resolution: "@project01/ch01@workspace:packages/project01/ch01"
+  dependencies:
+    "@types/three": "npm:^0"
+    three: "npm:^0.173.0"
+    typescript: "npm:~5.7.2"
+    vite: "npm:^6.1.0"
+  languageName: unknown
+  linkType: soft
 
 "@rollup/rollup-android-arm-eabi@npm:4.34.6":
   version: 4.34.6

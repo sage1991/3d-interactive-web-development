@@ -1,6 +1,6 @@
 import "./style.css"
 
-import { aspect } from "@example/common"
+import { aspect } from "@common/utils"
 import {
   AmbientLight,
   AxesHelper,
