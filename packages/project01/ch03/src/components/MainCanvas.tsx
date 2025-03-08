@@ -9,6 +9,7 @@ import { Dancer } from "./generated/Dancer.tsx"
 import { GlbModel } from "./GLBModel.tsx"
 import { Lights } from "./Lights.tsx"
 import { Meshes } from "./Meshes.tsx"
+import { PostProcessor } from "./PostProcessor.tsx"
 
 export const MainCanvas: FC = () => {
   return (
@@ -27,6 +28,7 @@ export const MainCanvas: FC = () => {
       <Meshes />
       <GlbModel />
       <Dancer />
+      <PostProcessor />
     </Canvas>
   )
 }

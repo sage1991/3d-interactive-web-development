@@ -1,5 +1,5 @@
-import { SpotLight, useHelper } from "@react-three/drei"
-import { FC, RefObject, useEffect, useRef } from "react"
+import { useHelper } from "@react-three/drei"
+import { FC, RefObject, useRef } from "react"
 import {
   DirectionalLight,
   DirectionalLightHelper,
@@ -19,8 +19,6 @@ export const Lights: FC = () => {
   const hemisphereLightRef = useRef<HemisphereLight>(null)
   const rectAreaLightRef = useRef<RectAreaLight>(null)
   const spotLightRef = useRef<ThreeSpotLight>(null)
-
-  useEffect(() => {}, [])
 
   useHelper(
     directionalLightRef as RefObject<DirectionalLight>,
@@ -77,22 +75,10 @@ export const Lights: FC = () => {
         position-x={10}
         rotation-y={Math.PI / 2}
       />
-      <SpotLight
+      <spotLight
         ref={spotLightRef}
-        castShadow
-        color={0xffffff}
-        intensity={10}
-        distance={100}
-        angle={Math.PI / 4}
-        penumbra={1}
-        decay={0.5}
-        anglePower={100}
-        attenuation={5}
-        radiusTop={1}
-        radiusBottom={10}
-        opacity={1}
-        volumetric
-        debug
+        args={[0xffffff, 10, 100, Math.PI / 4, 1, 0.5]}
+        castShadow={true}
         position={[-5, 5, -5]}
       />
     </>
