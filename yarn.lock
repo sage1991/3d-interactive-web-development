@@ -243,9 +243,10 @@ __metadata:
   resolution: "@common/utils@workspace:packages/common/utils"
   dependencies:
     "@types/three": "npm:^0"
-    three: "npm:^0.173.0"
     typescript: "npm:~5.7.2"
     vite: "npm:^6.1.0"
+  peerDependencies:
+    three: ^0.174.0
   languageName: unknown
   linkType: soft
 
@@ -874,7 +875,7 @@ __metadata:
   resolution: "@project01/ch01@workspace:packages/project01/ch01"
   dependencies:
     "@types/three": "npm:^0"
-    three: "npm:^0.173.0"
+    three: "npm:^0.174.0"
     typescript: "npm:~5.7.2"
     vite: "npm:^6.1.0"
   languageName: unknown
@@ -4669,13 +4670,6 @@ __metadata:
   version: 0.170.0
   resolution: "three@npm:0.170.0"
   checksum: 10c0/eeaa1eccb31467654a044fb90634b3b6bb8d0768a4f029c082fb6aa22aec0d6362d0e3af74938caa1db512b7823a031b54a76e88fba6cfd535054165ea9667c9
-  languageName: node
-  linkType: hard
-
-"three@npm:^0.173.0":
-  version: 0.173.0
-  resolution: "three@npm:0.173.0"
-  checksum: 10c0/6c8ad9b7ab6baaa0dc033c550e76cd3afe462ecfa99ba1b445714f36eeb4994e7dfcb1b72d3c32f6b53ac38df457aa3341ae4f948cb6cfd1d3acc9ee7bba4e58
   languageName: node
   linkType: hard
 

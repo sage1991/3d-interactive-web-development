@@ -24,7 +24,8 @@ export default ts.config(
         "warn",
         { allowConstantExport: true }
       ],
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      "react/no-unknown-property": "off"
     }
   }
 )
