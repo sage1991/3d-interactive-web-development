@@ -4,6 +4,7 @@ import { FC } from "react"
 import { Color } from "three"
 
 import { Controls } from "./Controls.tsx"
+import { GlbModel } from "./GLBModel.tsx"
 import { Lights } from "./Lights.tsx"
 import { Meshes } from "./Meshes.tsx"
 
@@ -24,6 +25,7 @@ export const MainCanvas: FC = () => {
       <Controls />
       <Lights />
       <Meshes />
+      <GlbModel />
     </Canvas>
   )
 }

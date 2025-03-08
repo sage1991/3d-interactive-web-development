@@ -12,8 +12,6 @@ export const Controls: FC = () => {
     <>
       <OrbitControls
         enableDamping
-        autoRotate
-        autoRotateSpeed={0.5}
         minPolarAngle={0.25 * Math.PI}
         maxPolarAngle={0.75 * Math.PI}
       />
