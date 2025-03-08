@@ -1,9 +1,9 @@
 import { aspect } from "@common/utils"
-import { OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { FC } from "react"
 import { Color } from "three"
 
+import { Controls } from "./Controls.tsx"
 import { Lights } from "./Lights.tsx"
 import { Meshes } from "./Meshes.tsx"
 
@@ -21,7 +21,7 @@ export const MainCanvas: FC = () => {
       }}
       scene={{ background: new Color(0x000000) }}
     >
-      <OrbitControls />
+      <Controls />
       <Lights />
       <Meshes />
     </Canvas>
