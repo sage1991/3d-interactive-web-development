@@ -3,3 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body,
+#root {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+}
+
+@supports (width: 100dvw) and (height: 100dvh) {
+  body,
+  #root {
+    width: 100dvw;
+    height: 100dvh;
+  }
+}
