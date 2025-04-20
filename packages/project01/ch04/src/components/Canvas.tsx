@@ -1,5 +1,5 @@
 import { aspect } from "@common/utils"
-import { OrbitControls } from "@react-three/drei"
+import { ScrollControls } from "@react-three/drei"
 import { Canvas as ReactThreeFiberCanvas } from "@react-three/fiber"
 import { FC } from "react"
 import { Color } from "three"
@@ -23,9 +23,10 @@ export const Canvas: FC = () => {
       }}
       scene={{ background }}
     >
-      <OrbitControls />
       <ambientLight intensity={2} />
-      <Dancer />
+      <ScrollControls pages={8} damping={0.25}>
+        <Dancer />
+      </ScrollControls>
     </ReactThreeFiberCanvas>
   )
 }
