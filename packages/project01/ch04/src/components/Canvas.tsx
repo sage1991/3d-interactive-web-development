@@ -1,8 +1,10 @@
 import { aspect } from "@common/utils"
-import { Box, OrbitControls } from "@react-three/drei"
+import { OrbitControls } from "@react-three/drei"
 import { Canvas as ReactThreeFiberCanvas } from "@react-three/fiber"
 import { FC } from "react"
 import { Color } from "three"
+
+import { Dancer } from "./Dancer.tsx"
 
 const background = new Color(0x000000)
 
@@ -22,7 +24,8 @@ export const Canvas: FC = () => {
       scene={{ background }}
     >
       <OrbitControls />
-      <Box material-color={0xff0000} />
+      <ambientLight intensity={2} />
+      <Dancer />
     </ReactThreeFiberCanvas>
   )
 }
