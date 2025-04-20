@@ -7,14 +7,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
   "peerDependencies": {
-    "three": "^0.174.0"
+    "three": "^0.175.0"
   },
   "devDependencies": {
     "@types/three": "^0.174.0",
-    "typescript": "~5.7.2",
+    "typescript": "^5.7.3",
     "vite": "^6.3.2"
   }
 }

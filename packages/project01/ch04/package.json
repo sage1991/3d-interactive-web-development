@@ -1,27 +1,31 @@
 {
-  "name": "@project01/ch03",
+  "name": "@project01/ch04",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host --open",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
-    "@react-three/postprocessing": "^3.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "three": "^0.175.0"
+    "three": "^0.175.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "@types/three": "^0.174.0",
+    "@types/three": "^0",
     "@vitejs/plugin-react": "^4.3.4",
+    "globals": "^16.0.0",
     "typescript": "^5.7.3",
     "vite": "^6.3.2"
   }
