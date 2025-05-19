@@ -16,7 +16,7 @@ const blink = keyframes`
 export const Background = styled.div`
   width: 400px;
   height: 400px;
-  background-color: #ff0000;
+  background-color: #efefef;
   border-radius: 50%;
   filter: blur(250px);
 `

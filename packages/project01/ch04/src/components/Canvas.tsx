@@ -4,8 +4,11 @@ import { Canvas as ReactThreeFiberCanvas } from "@react-three/fiber"
 import { FC, Suspense } from "react"
 import { Color } from "three"
 
-import { Dancer } from "./Dancer"
+import { CameraConfig } from "./Camera/CameraConfig.tsx"
+import { MovingDom } from "./dom/MovingDOM.tsx"
 import { Loader } from "./Loader"
+import { Earth } from "./models/Earth.tsx"
+import { Sun } from "./models/Sun.tsx"
 
 const background = new Color(0x000000)
 
@@ -20,16 +23,20 @@ export const Canvas: FC = () => {
         aspect: aspect(),
         near: 0.01,
         far: 1000,
-        position: [0, 6, 12]
+        position: [10, 10, 20]
       }}
       scene={{ background }}
     >
       <ambientLight intensity={2} />
-      <ScrollControls pages={8} damping={0.25}>
-        <Suspense fallback={<Loader />}>
-          <Dancer />
-        </Suspense>
-      </ScrollControls>
+      <Suspense fallback={<Loader />}>
+        <ScrollControls pages={3} damping={0.25}>
+          <CameraConfig />
+          <MovingDom />
+          <Sun />
+          <Earth />
+        </ScrollControls>
+      </Suspense>
+      {/*<axesHelper args={[5]} />*/}
     </ReactThreeFiberCanvas>
   )
 }
