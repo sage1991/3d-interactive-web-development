@@ -13,7 +13,7 @@ export const CameraConfig: FC = () => {
   const pivotRef = useRef(new Object3D())
   const spaceshipRef = useRef<Object3D>(null)
   const timeline = useMemo(() => {
-    return gsap.timeline()
+    return gsap.timeline({ paused: true })
   }, [])
   const [, api] = useSpring(() => ({
     x: 10,
@@ -63,7 +63,7 @@ export const CameraConfig: FC = () => {
   }, [camera, timeline])
 
   useFrame(() => {
-    timeline.progress(scroll.offset)
+    timeline.seek(scroll.offset * timeline.duration())
   })
 
   useEffect(() => {
