@@ -1,6 +1,7 @@
 import { aspect } from "@common/utils"
 import { ScrollControls } from "@react-three/drei"
 import { Canvas as ReactThreeFiberCanvas } from "@react-three/fiber"
+import { Bloom, EffectComposer } from "@react-three/postprocessing"
 import { FC, Suspense } from "react"
 import { Color } from "three"
 
@@ -36,6 +37,9 @@ export const Canvas: FC = () => {
           <Earth />
         </ScrollControls>
       </Suspense>
+      <EffectComposer>
+        <Bloom intensity={0.9} luminanceThreshold={0.2} mipmapBlur />
+      </EffectComposer>
       {/*<axesHelper args={[5]} />*/}
     </ReactThreeFiberCanvas>
   )
